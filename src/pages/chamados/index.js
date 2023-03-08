@@ -6,39 +6,39 @@ const Empresas = () => {
     const [chamadoList, setChamadoList] = useState([])
 
     useEffect(() => {
-        // LoadData().then(data => {
-        //     setAndamentoList(data)
-        // }).catch(err => {
-        //     console.log(err)
-        // })
+        LoadData().then(data => {
+            setChamadoList(data)
+        }).catch(err => {
+            console.log(err)
+        })
     }, [])
 
     const LoadData = async () => {
-        // try {
-        //     const response = await fetch(`/api/${urlRoot}`, {
-        //         method: "GET"
-        //     });
-        //     const data = await response.json();
-        //     return data
-        // } catch (error) {
-        //     console.log(error);
-        // }
+        try {
+            const response = await fetch(`/api/${urlRoot}`, {
+                method: "GET"
+            });
+            const data = await response.json();
+            return data
+        } catch (error) {
+            console.log(error);
+        }
     }
 
     const RemoveData = (id) => {
-        // if (confirm("Deseja realmente remover o andamento?")) {
-        //     fetch(`/api/${urlRoot}/${id}`, {
-        //         method: "DELETE"
-        //     }).then(response => {
-        //         if (response) {
-        //             LoadData().then(data => {
-        //                 setAndamentoList(data)
-        //             });
-        //         }
-        //     }).catch(err => {
-        //         console.log(err)
-        //     })
-        // }
+        if (confirm("Deseja realmente remover o chamado?")) {
+            fetch(`/api/${urlRoot}/${id}`, {
+                method: "DELETE"
+            }).then(response => {
+                if (response) {
+                    LoadData().then(data => {
+                        setAndamentoList(data)
+                    });
+                }
+            }).catch(err => {
+                console.log(err)
+            })
+        }
     }
 
 
@@ -50,28 +50,34 @@ const Empresas = () => {
                     <table className="table table-bordered table-sm">
                         <thead>
                             <tr>
-                                <th scope="col">Andamento</th>
+                                <th scope="col-12">Assunto</th>
+                                <th scope="col-12">Solicitacao</th>
+                                <th scope="col-12">Empresa</th>
+                                <th scope="col-12">Analista</th>
                                 <th>#</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
-                                // Array.isArray(chamadoList) &&
-                                // chamadoList.map((item, index) => {
-                                //     return (
-                                //         <tr key={index}>
-                                //             <td>{item.Nome}</td>
-                                //             <td>
-                                //                 <a href={`/${urlRoot}/AddOrEdit/${item.Id}`} className="me-2">
-                                //                     <i className="fas fa-edit"></i>
-                                //                 </a>
-                                //                 <span className="text-danger" onClick={(e) => { RemoveData(item.Id) }}>
-                                //                     <i className="fas fa-trash"></i>
-                                //                 </span>
-                                //             </td>
-                                //         </tr>
-                                //     )
-                                // })
+                                Array.isArray(chamadoList) &&
+                                chamadoList.map((item, index) => {
+                                    return (
+                                        <tr key={index}>
+                                            <td>{item.Assunto}</td>
+                                            <td>{item.DtSolicitacao}</td>
+                                            <td>{item.Empresa}</td>
+                                            <td>{item.Analista}</td>
+                                            <td>
+                                                <a href={`/${urlRoot}/AddOrEdit/${item.Id}`} className="me-2">
+                                                    <i className="fas fa-edit"></i>
+                                                </a>
+                                                <span className="text-danger" onClick={(e) => { RemoveData(item.Id) }}>
+                                                    <i className="fas fa-trash"></i>
+                                                </span>
+                                            </td>
+                                        </tr>
+                                    )
+                                })
                             }
                         </tbody>
                     </table>
