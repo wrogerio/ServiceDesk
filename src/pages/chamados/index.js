@@ -1,6 +1,6 @@
 import HeaderPage from "@/components/HeaderPage";
 import { useEffect, useLayoutEffect, useState } from "react";
-import { ConvertToPtBRDateFormatSmall } from './../../helper/index';
+import { ConvertNumberTwoDigits, ConvertToPtBRDateFormatSmall } from './../../helper/index';
 
 const Empresas = () => {
     const urlRoot = "chamados";
@@ -56,7 +56,7 @@ const Empresas = () => {
 
     return (
         <>
-            <HeaderPage title="Chamados" pageType="index" accessKey="c" textBt="Cadastrar" linkToBack={`/${urlRoot}/AddOrEdit/0`} iconBt="fas fa-plus-circle me-2"></HeaderPage>
+            <HeaderPage title={`Chamados (${ConvertNumberTwoDigits(chamadoList.length)})`} pageType="index" accessKey="c" textBt="Cadastrar" linkToBack={`/${urlRoot}/AddOrEdit/0`} iconBt="fas fa-plus-circle me-2"></HeaderPage>
             <div className="row">
                 <div className="col">
                     <table className="table table-bordered table-sm" id="tbChamados">
