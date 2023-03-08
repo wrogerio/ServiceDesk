@@ -28,12 +28,12 @@ const Navbar = () => {
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className={currentRoute == "/instituicoes" ? "nav-link active" : "nav-link"} href="/empresas" onClick={() => toggleMenu()}>
+                            <Link className={currentRoute == "/chamados" ? "nav-link active" : "nav-link"} href="/chamados" onClick={() => toggleMenu()}>
                                 <i className="fas fa-hand-holding-medical me-1"></i> Chamados
                             </Link>
                         </li>
                         <li className="nav-item">
-                            <Link className={currentRoute == "/instituicoes" ? "nav-link active" : "nav-link"} href="/empresas" onClick={() => toggleMenu()}>
+                            <Link className={currentRoute == "/empresas" ? "nav-link active" : "nav-link"} href="/empresas" onClick={() => toggleMenu()}>
                                 <i className="fas fa-building me-1"></i> Empresas
                             </Link>
                         </li>
