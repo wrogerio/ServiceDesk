@@ -1,13 +1,14 @@
 import pool from "@/database/db";
 
-export const GetAll = async () => {
-    const querie = `SELECT  c.Id, c.AnalistaId, a.Nome AS Analista, c.AndamentoId, an.Nome As Andamento, c.EmpresaId, e.Nome AS Empresa, c.AreaId, ar.Nome AS Area, c.DtSolicitacao, c.Solicitante, c.Assunto, c.Descricao, c.DtEncerramento
+export const GetAll = async (areaId) => {
+    const querie = `SELECT  c.Id, c.AnalistaId, a.Nome AS Analista, c.AndamentoId, an.Nome As Andamento, c.EmpresaId, e.Nome AS Empresa, 
+                            c.AreaId, ar.Nome AS Area, c.DtSolicitacao, c.DtEncerramento, DATEDIFF(DAY, c.DtSolicitacao, CASE WHEN c.DtEncerramento IS NULL THEN GETDATE() ELSE c.DtEncerramento END) AS DiasCorridos, c.Solicitante, c.Assunto, c.Descricao
                     FROM    Chamados c
                             INNER JOIN Analistas a ON c.AnalistaId = a.Id
                             INNER JOIN Andamento an ON c.AndamentoId = an.Id
                             INNER JOIN Empresas e ON c.EmpresaId = e.Id
                             INNER JOIN Area ar ON c.AreaId = ar.Id
-                    WHERE   c.DtEncerramento IS NULL
+                    WHERE   c.DtEncerramento IS NULL And ar.Nome = 'Task'
                     ORDER   BY c.DtSolicitacao DESC`
     return new Promise(async (resolve, reject) => {
         try {

@@ -1,5 +1,6 @@
 import HeaderPage from "@/components/HeaderPage";
 import { useEffect, useLayoutEffect, useState } from "react";
+import { ConvertToPtBRDateFormatSmall } from './../../helper/index';
 
 const Empresas = () => {
     const urlRoot = "chamados";
@@ -16,7 +17,11 @@ const Empresas = () => {
     const LoadData = async () => {
         try {
             const response = await fetch(`/api/${urlRoot}`, {
-                method: "GET"
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "AreaId": '6ff0b99e-9a04-4b4d-9851-ae8e7a02554f'
+                },
             });
             const data = await response.json();
             return data
@@ -47,13 +52,14 @@ const Empresas = () => {
             <HeaderPage title="Chamados" pageType="index" accessKey="c" textBt="Cadastrar" linkToBack={`/${urlRoot}/AddOrEdit/0`} iconBt="fas fa-plus-circle me-2"></HeaderPage>
             <div className="row">
                 <div className="col">
-                    <table className="table table-bordered table-sm">
+                    <table className="table table-bordered table-sm" id="tbChamados">
                         <thead>
                             <tr>
-                                <th scope="col-12">Assunto</th>
-                                <th scope="col-12">Solicitacao</th>
-                                <th scope="col-12">Empresa</th>
-                                <th scope="col-12">Analista</th>
+                                <th className="">Assunto</th>
+                                <th className="">Data</th>
+                                <th className="d-none d-lg-table-cell">Dias</th>
+                                <th className="d-none d-lg-table-cell">Empresa</th>
+                                <th className="d-none d-md-table-cell">Analista</th>
                                 <th>#</th>
                             </tr>
                         </thead>
@@ -63,10 +69,11 @@ const Empresas = () => {
                                 chamadoList.map((item, index) => {
                                     return (
                                         <tr key={index}>
-                                            <td>{item.Assunto}</td>
-                                            <td>{item.DtSolicitacao}</td>
-                                            <td>{item.Empresa}</td>
-                                            <td>{item.Analista}</td>
+                                            <td className="">{item.Assunto}</td>
+                                            <td className="">{ConvertToPtBRDateFormatSmall(item.DtSolicitacao)}</td>
+                                            <td className="d-none d-lg-table-cell">{item.DiasCorridos}</td>
+                                            <td className="d-none d-lg-table-cell">{item.Empresa}</td>
+                                            <td className="d-none d-md-table-cell">{item.Analista}</td>
                                             <td>
                                                 <a href={`/${urlRoot}/AddOrEdit/${item.Id}`} className="me-2">
                                                     <i className="fas fa-edit"></i>
