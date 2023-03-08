@@ -33,6 +33,11 @@ const Navbar = () => {
                             </Link>
                         </li>
                         <li className="nav-item">
+                            <Link className={currentRoute == "/adm" ? "nav-link active" : "nav-link"} href="/adm" onClick={() => toggleMenu()}>
+                                <i className="fas fa-database me-1"></i> Adm
+                            </Link>
+                        </li>
+                        <li className="nav-item">
                             <Link className={currentRoute == "/empresas" ? "nav-link active" : "nav-link"} href="/empresas" onClick={() => toggleMenu()}>
                                 <i className="fas fa-building me-1"></i> Empresas
                             </Link>

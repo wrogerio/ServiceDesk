@@ -3,22 +3,67 @@ import Link from "next/link";
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { ConvertToStringDate } from "@/helper";
 
 
 const AddOrEdit = () => {
-    const urlRoot = "andamentos";
-    const [andamento, setAndamento] = useState({})
+    const urlRoot = "chamados";
+    const [chamado, setChamado] = useState({ AreaId: '6FF0B99E-9A04-4B4D-9851-AE8E7A02554F' })
+    const [areas, setAreas] = useState([]);
+    const [andamentos, setAndamentos] = useState([]);
+    const [analistas, setAnalistas] = useState([]);
+    const [empresas, setEmpresas] = useState([]);
     const router = useRouter();
 
+    const LoadAndamento = async () => {
+        const res = await fetch(`/api/andamentos`);
+        const data = await res.json();
+        return data
+    }
+
+    const LoadAnalistas = async () => {
+        const res = await fetch(`/api/analistas`);
+        const data = await res.json();
+        return data;
+    }
+
+    const LoadEmpresas = async () => {
+        const res = await fetch(`/api/empresas`);
+        const data = await res.json();
+        return data;
+    }
+
+    const LoadAreas = async () => {
+        const res = await fetch(`/api/areas`);
+        const data = await res.json();
+        return data;
+    }
 
     useEffect(() => {
-        const id = window.location.href.split("AddOrEdit/")[1];
-        if (id !== "0") {
-            loadData().then((res) => {
-                setAndamento(res);
-            })
-        }
+        LoadAndamento().then(data => {
+            setAndamentos(data)
+        });
+
+        LoadAnalistas().then(data => {
+            setAnalistas(data)
+        });
+
+        LoadEmpresas().then(data => {
+            setEmpresas(data)
+        });
+
+        LoadAreas().then(data => {
+            setAreas(data)
+        })
+
+        loadData().then(data => {
+            console.log(data);
+            if (data) {
+                setChamado(data);
+            }
+        })
     }, [])
+
 
     const loadData = async () => {
         const id = window.location.href.split("AddOrEdit/")[1];
@@ -35,7 +80,7 @@ const AddOrEdit = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(andamento)
+                body: JSON.stringify(chamado)
             })
 
             if (res) {
@@ -48,7 +93,7 @@ const AddOrEdit = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body: JSON.stringify(andamento)
+                body: JSON.stringify(chamado)
             })
 
             if (res) {
@@ -59,18 +104,85 @@ const AddOrEdit = () => {
 
     return (
         <>
-            <HeaderPage title="Andamentos" pageType="cadastrar" accessKey="v" textBt="Voltar" linkToBack={`/${urlRoot}`} iconBt="fas fa-home me-2"></HeaderPage>
+            <HeaderPage title="Chamados" pageType="cadastrar" accessKey="v" textBt="Voltar" linkToBack={`/${urlRoot}`} iconBt="fas fa-home me-2"></HeaderPage>
             <div className="row">
                 <div className="col">
                     <div className="card">
                         <div className="card-body">
-
                             <div className="row mb-2">
-                                <div className="col">
-                                    <div className="form-group">
-                                        <label htmlFor="nome">Andamento</label>
-                                        <input type="text" className="form-control" id="Nome" autoFocus value={andamento.Nome} name="Nome" onChange={(e) => { setAndamento({ ...andamento, Nome: e.target.value }) }} />
-                                    </div>
+                                <div className="col-12 col-md-6 mb-2">
+                                    <div className="form-group">Dt Solicitação</div>
+                                    <input type="date" className="form-control" autoFocus name="DtSolicitacao" id="DtSolicitacao" value={chamado.DtSolicitacaoString} onChange={e => setChamado({ ...chamado, DtSolicitacao: e.target.value, DtSolicitacaoString: e.target.value })} />
+                                </div>
+                                <div className="col-12 col-md-6 mb-2">
+                                    <div className="form-group">Solicitante</div>
+                                    <input type="text" className="form-control" name="Solicitante" id="Solicitante" value={chamado.Solicitante} onChange={e => setChamado({ ...chamado, Solicitante: e.target.value })} />
+                                </div>
+                                <div className="col-12 mb-2">
+                                    <div className="form-group">Assunto</div>
+                                    <input type="text" className="form-control" name="Assunto" id="Assunto" value={chamado.Assunto} onChange={e => setChamado({ ...chamado, Assunto: e.target.value })} />
+                                </div>
+                                <div className="col-12 mb-2">
+                                    <div className="form-group">Descrição</div>
+                                    <textarea type="text" className="form-control" name="Descricao" id="Descricao" rows={5} value={chamado.Descricao} onChange={e => setChamado({ ...chamado, Descricao: e.target.value })}>
+
+                                    </textarea>
+                                </div>
+                                <div className="col-12 col-md-6 col-lg-3 mb-2">
+                                    <div className="form-group">Area</div>
+                                    <select type="text" className="form-control" name="AreaId" id="AreaId" value={chamado.AreaId} onChange={e => setChamado({ ...chamado, AreaId: e.target.value })}>
+                                        <option value="">Selecione</option>
+                                        {
+                                            Array.isArray(areas) &&
+                                            areas.map((item, index) => {
+                                                return (
+                                                    <option key={index} value={item.Id}>{item.Nome}</option>
+                                                )
+                                            })
+                                        }
+                                    </select>
+                                </div>
+                                <div className="col-12 col-md-6 col-lg-3 mb-2">
+                                    <div className="form-group">Analista</div>
+                                    <select type="text" className="form-control" name="AnalistaId" id="AnalistaId" value={chamado.AnalistaId} onChange={e => setChamado({ ...chamado, AnalistaId: e.target.value })}>
+                                        <option value="">Selecione</option>
+                                        {
+                                            Array.isArray(analistas) &&
+                                            analistas.map((item, index) => {
+                                                return (
+                                                    <option key={index} value={item.Id}>{item.Nome}</option>
+                                                )
+                                            })
+                                        }
+                                    </select>
+                                </div>
+                                <div className="col-12 col-md-6 col-lg-3 mb-2">
+                                    <div className="form-group">Empresa</div>
+                                    <select type="text" className="form-control" name="EmpresaId" id="EmpresaId" value={chamado.EmpresaId} onChange={e => setChamado({ ...chamado, EmpresaId: e.target.value })}>
+                                        <option value="">Selecione</option>
+                                        {
+                                            Array.isArray(empresas) &&
+                                            empresas.map((item, index) => {
+                                                return (
+                                                    <option key={index} value={item.Id}>{item.Nome}</option>
+                                                )
+                                            })
+                                        }
+                                    </select>
+                                </div>
+                                <div className="col-12 col-md-6 col-lg-3 mb-2">
+                                    <div className="form-group">Andamento</div>
+                                    <select type="text" className="form-control" name="AndamentoId" id="AndamentoId" value={chamado.AndamentoId} onChange={e => setChamado({ ...chamado, AndamentoId: e.target.value })}>
+                                        <option value="">Selecione</option>
+                                        {
+                                            Array.isArray(andamentos) &&
+                                            andamentos.map((item, index) => {
+                                                return (
+                                                    <option key={index} value={item.Id}>{item.Nome}</option>
+                                                )
+                                            })
+                                        }
+                                    </select>
                                 </div>
                             </div>
 
@@ -95,7 +207,9 @@ const AddOrEdit = () => {
                 </div>
             </div>
         </>
-    );
-};
+    )
+}
+
+
 
 export default AddOrEdit;

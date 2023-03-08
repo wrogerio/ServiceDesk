@@ -2,7 +2,7 @@ import HeaderPage from "@/components/HeaderPage";
 import { useEffect, useLayoutEffect, useState } from "react";
 import { ConvertToPtBRDateFormatSmall } from './../../helper/index';
 
-const Empresas = () => {
+const Adm = () => {
     const urlRoot = "chamados";
     const [chamadoList, setChamadoList] = useState([])
 
@@ -20,7 +20,7 @@ const Empresas = () => {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
-                    "AreaId": '6ff0b99e-9a04-4b4d-9851-ae8e7a02554f'
+                    "AreaId": 'fea42031-ea38-49bc-b91f-50e37ba59065'
                 },
             });
             const data = await response.json();
@@ -49,7 +49,7 @@ const Empresas = () => {
 
     return (
         <>
-            <HeaderPage title="Chamados" pageType="index" accessKey="c" textBt="Cadastrar" linkToBack={`/${urlRoot}/AddOrEdit/0`} iconBt="fas fa-plus-circle me-2"></HeaderPage>
+            <HeaderPage title="Administrativos" pageType="index" accessKey="c" textBt="Cadastrar" linkToBack={`/${urlRoot}/AddOrEdit/0`} iconBt="fas fa-plus-circle me-2"></HeaderPage>
             <div className="row">
                 <div className="col">
                     <table className="table table-bordered table-sm" id="tbChamados">
@@ -94,4 +94,4 @@ const Empresas = () => {
     );
 };
 
-export default Empresas;
+export default Adm;
