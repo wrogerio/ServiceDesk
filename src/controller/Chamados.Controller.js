@@ -30,7 +30,6 @@ export const GetById = async (id) => {
                             INNER JOIN Empresas e ON c.EmpresaId = e.Id
                             INNER JOIN Area ar ON c.AreaId = ar.Id
                     WHERE   c.Id = '${id}'`
-    console.log(querie)
     return new Promise(async (resolve, reject) => {
         try {
             await pool.connect();
@@ -67,7 +66,6 @@ export const Update = async (chamado) => {
                     Solicitante = '${chamado.Solicitante}', Assunto = '${chamado.Assunto}', 
                     Descricao = '${chamado.Descricao}' 
                     WHERE Id = '${chamado.Id}'`
-    console.log(querie);
     return new Promise(async (resolve, reject) => {
         try {
             await pool.connect();

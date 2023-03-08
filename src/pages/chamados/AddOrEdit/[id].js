@@ -57,7 +57,6 @@ const AddOrEdit = () => {
         })
 
         loadData().then(data => {
-            console.log(data);
             if (data) {
                 setChamado(data);
             }

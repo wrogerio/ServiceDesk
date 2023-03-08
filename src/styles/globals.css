@@ -34,3 +34,8 @@ td {
 #tbChamados td {
     font-size: 0.95rem !important ;
 }
+
+a {
+    color: #1538d2;
+    text-decoration: none;
+}
