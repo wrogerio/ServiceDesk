@@ -1,1 +1,22 @@
-{}
+{
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        ".eslintrc.json": true,
+        ".next": true,
+        ".vercel": true,
+        ".vscode": true,
+        "next-env.d.ts": true,
+        "next.config.js": true,
+        "node_modules": true,
+        "package-lock.json": true,
+        "pages/api/": true,
+        "public": true,
+        "README.md": true,
+        "tsconfig.json": true
+    }
+}

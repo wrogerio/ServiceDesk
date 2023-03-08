@@ -28,7 +28,7 @@ export const HeaderPage = (props) => {
     return (
         <div className="row mb-2">
             <div className="col">
-                <div className="headerPageBg py-2">
+                <div className="headerPageBg p-3 shadow-sm">
                     <div className="d-flex justify-content-between align-items-center">
                         <h3 className={titleFormat}>{title}</h3>
                         <Link href={linkToBack} className={buttomClass} accessKey={accessKey}>
