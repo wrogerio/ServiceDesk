@@ -69,7 +69,11 @@ const Empresas = () => {
                                 chamadoList.map((item, index) => {
                                     return (
                                         <tr key={index}>
-                                            <td className="">{item.Assunto}</td>
+                                            <td className="">
+                                                <a href={`/${urlRoot}/AddOrEdit/${item.Id}`}>
+                                                    {item.Assunto}
+                                                </a>
+                                            </td>
                                             <td className="">{ConvertToPtBRDateFormatSmall(item.DtSolicitacao)}</td>
                                             <td className="d-none d-lg-table-cell">{item.DiasCorridos}</td>
                                             <td className="d-none d-lg-table-cell">{item.Empresa}</td>
