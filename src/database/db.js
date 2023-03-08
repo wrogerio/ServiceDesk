@@ -1,10 +1,10 @@
 const sql = require("mssql");
 const config = {
-    user: "w_servicedesk_usr",
-    password: "Brasil82+82",
-    server: "mssql-112705-0.cloudclusters.net",
-    port: 19809,
-    database: "w_ServiceDesk",
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    server: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    database: process.env.DB_NAME,
     options: {
         encrypt: true,
         trustServerCertificate: true,
