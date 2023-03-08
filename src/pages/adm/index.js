@@ -1,6 +1,6 @@
 import HeaderPage from "@/components/HeaderPage";
 import { useEffect, useLayoutEffect, useState } from "react";
-import { ConvertToPtBRDateFormatSmall } from './../../helper/index';
+import { ConvertNumberTwoDigits, ConvertToPtBRDateFormatSmall } from './../../helper/index';
 
 const Adm = () => {
     const urlRoot = "chamados";
@@ -46,10 +46,16 @@ const Adm = () => {
         }
     }
 
+    const getAnalistaPhoto = (analistaId) => {
+        if (analistaId.toLowerCase() == 'dfc86d2b-8052-4a3f-a2aa-39d8b4b1d030')
+            return <img src="gerio.png" className="imgAnalista border border-2 border-secondary rounded" />
+        else
+            return <img src="moiza.png" className="imgAnalista border border-2 border-secondary rounded" />
+    }
 
     return (
         <>
-            <HeaderPage title="Administrativos" pageType="index" accessKey="c" textBt="Cadastrar" linkToBack={`/${urlRoot}/AddOrEdit/0`} iconBt="fas fa-plus-circle me-2"></HeaderPage>
+            <HeaderPage title={`Adm (${ConvertNumberTwoDigits(chamadoList.length)})`} pageType="index" accessKey="c" textBt="Cadastrar" linkToBack={`/${urlRoot}/AddOrEdit/0`} iconBt="fas fa-plus-circle me-2"></HeaderPage>
             <div className="row">
                 <div className="col">
                     <table className="table table-bordered table-sm" id="tbChamados">
@@ -60,7 +66,8 @@ const Adm = () => {
                                 <th className="d-none d-lg-table-cell">Dias</th>
                                 <th className="d-none d-lg-table-cell">Empresa</th>
                                 <th className="d-none d-md-table-cell">Analista</th>
-                                <th>#</th>
+                                <th className="">Photo</th>
+                                <th style={{ width: '50px' }}>#</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -69,18 +76,23 @@ const Adm = () => {
                                 chamadoList.map((item, index) => {
                                     return (
                                         <tr key={index}>
-                                            <td className="">{item.Assunto}</td>
+                                            <td>
+                                                <a href={`/${urlRoot}/AddOrEdit/${item.Id}`}>
+                                                    {item.Assunto}
+                                                </a>
+                                            </td>
                                             <td className="">{ConvertToPtBRDateFormatSmall(item.DtSolicitacao)}</td>
                                             <td className="d-none d-lg-table-cell">{item.DiasCorridos}</td>
                                             <td className="d-none d-lg-table-cell">{item.Empresa}</td>
                                             <td className="d-none d-md-table-cell">{item.Analista}</td>
+                                            <td className="">{getAnalistaPhoto(item.AnalistaId)}</td>
                                             <td>
-                                                <a href={`/${urlRoot}/AddOrEdit/${item.Id}`} className="me-2">
+                                                <a href={`/${urlRoot}/AddOrEdit/${item.Id}`}>
                                                     <i className="fas fa-edit"></i>
                                                 </a>
-                                                <span className="text-danger" onClick={(e) => { RemoveData(item.Id) }}>
+                                                {/* <span className="text-danger" onClick={(e) => { RemoveData(item.Id) }}>
                                                     <i className="fas fa-trash"></i>
-                                                </span>
+                                                </span> */}
                                             </td>
                                         </tr>
                                     )

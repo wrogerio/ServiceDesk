@@ -1,7 +1,7 @@
 import pool from "@/database/db";
 
 export const GetAll = async (areaId) => {
-    const querie = `SELECT  Id, AnalistaId, Analista, AndamentoId, Andamento, EmpresaId, Empresa, AreaId, Area, DtSolicitacao, 
+    const querie = `SELECT  Id, AnalistaId, Analista, AndamentoId, Andamento, EmpresaId, Empresa, AreaId, Area, DtSolicitacao, DtSolicitacaoString, 
                             DtEncerramento, DiasCorridos, Solicitante, Assunto, Descricao
                     FROM    vPage_Chamados
                     WHERE   DtEncerramento IS NULL And AreaId = '${areaId}'
@@ -18,7 +18,7 @@ export const GetAll = async (areaId) => {
 }
 
 export const GetById = async (id) => {
-    const querie = `SELECT  Id, AnalistaId, Analista, AndamentoId, Andamento, EmpresaId, Empresa, AreaId, Area, DtSolicitacao, 
+    const querie = `SELECT  Id, AnalistaId, Analista, AndamentoId, Andamento, EmpresaId, Empresa, AreaId, Area, DtSolicitacao, DtSolicitacaoString, 
                             DtEncerramento, DiasCorridos, Solicitante, Assunto, Descricao
                     FROM    vPage_Chamados
                     WHERE   Id = '${id}'`
