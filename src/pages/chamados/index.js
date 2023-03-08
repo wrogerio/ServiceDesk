@@ -46,6 +46,23 @@ const Empresas = () => {
         }
     }
 
+    const FecharChamado = (id) => {
+        if (confirm("Deseja realmente fechar o chamado ?")) {
+            fetch(`/api/${urlRoot}/encerrar/${id}`, {
+                method: "GET"
+            }).then(response => {
+                if (response) {
+                    LoadData().then(data => {
+                        setChamadoList(data)
+                    });
+                }
+            }).catch(err => {
+                console.log(err)
+            })
+
+        }
+    }
+
     const getAnalistaPhoto = (analistaId) => {
         if (analistaId.toLowerCase() == 'dfc86d2b-8052-4a3f-a2aa-39d8b4b1d030')
             return <img src="gerio.png" className="imgAnalista border border-2 border-secondary rounded" />
@@ -86,7 +103,7 @@ const Empresas = () => {
                                             <td className="d-none d-lg-table-cell">{item.DiasCorridos}</td>
                                             <td className="d-none d-lg-table-cell">{item.Empresa}</td>
                                             <td className="d-none d-md-table-cell">{item.Analista}</td>
-                                            <td className="">{getAnalistaPhoto(item.AnalistaId)}</td>
+                                            <td className="" onDoubleClick={() => FecharChamado(item.Id)}>{getAnalistaPhoto(item.AnalistaId)}</td>
                                             <td>
                                                 <a href={`/${urlRoot}/AddOrEdit/${item.Id}`}>
                                                     <i className="fas fa-edit"></i>

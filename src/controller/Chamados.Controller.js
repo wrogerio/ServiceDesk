@@ -33,6 +33,19 @@ export const GetById = async (id) => {
     })
 }
 
+export const FecharChamado = async (id) => {
+    const querie = `UPDATE Chamados SET DtEncerramento = GETDATE() WHERE Id = '${id}'`
+    return new Promise(async (resolve, reject) => {
+        try {
+            await pool.connect();
+            const result = await pool.query(querie)
+            resolve(true);
+        } catch (error) {
+            reject(false);
+        }
+    })
+}
+
 export const Add = async (chamado) => {
     const querie = `    INSERT INTO Chamados 
                         (AnalistaId, AndamentoId, EmpresaId, AreaId, DtSolicitacao, Solicitante, Assunto, Descricao)  
