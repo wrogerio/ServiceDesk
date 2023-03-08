@@ -46,6 +46,13 @@ const Empresas = () => {
         }
     }
 
+    const getAnalistaPhoto = (analistaId) => {
+        if (analistaId.toLowerCase() == 'dfc86d2b-8052-4a3f-a2aa-39d8b4b1d030')
+            return <img src="gerio.png" className="imgAnalista" />
+        else
+            return <img src="moiza.png" className="imgAnalista" />
+    }
+
 
     return (
         <>
@@ -60,6 +67,7 @@ const Empresas = () => {
                                 <th className="d-none d-lg-table-cell">Dias</th>
                                 <th className="d-none d-lg-table-cell">Empresa</th>
                                 <th className="d-none d-md-table-cell">Analista</th>
+                                <th className="">Photo</th>
                                 <th style={{ width: '50px' }}>#</th>
                             </tr>
                         </thead>
@@ -69,7 +77,7 @@ const Empresas = () => {
                                 chamadoList.map((item, index) => {
                                     return (
                                         <tr key={index}>
-                                            <td className="">
+                                            <td>
                                                 <a href={`/${urlRoot}/AddOrEdit/${item.Id}`}>
                                                     {item.Assunto}
                                                 </a>
@@ -78,6 +86,7 @@ const Empresas = () => {
                                             <td className="d-none d-lg-table-cell">{item.DiasCorridos}</td>
                                             <td className="d-none d-lg-table-cell">{item.Empresa}</td>
                                             <td className="d-none d-md-table-cell">{item.Analista}</td>
+                                            <td className="">{getAnalistaPhoto(item.AnalistaId)}</td>
                                             <td>
                                                 <a href={`/${urlRoot}/AddOrEdit/${item.Id}`}>
                                                     <i className="fas fa-edit"></i>
