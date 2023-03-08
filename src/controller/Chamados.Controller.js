@@ -34,7 +34,7 @@ export const GetById = async (id) => {
 }
 
 export const FecharChamado = async (id) => {
-    const querie = `UPDATE Chamados SET DtEncerramento = GETDATE() WHERE Id = '${id}'`
+    const querie = `UPDATE Chamados SET DtEncerramento = GETDATE(), AndamentoId = '3031781c-add3-4137-80e4-53a446e46f0d' WHERE Id = '${id}'`
     return new Promise(async (resolve, reject) => {
         try {
             await pool.connect();
