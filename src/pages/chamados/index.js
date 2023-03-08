@@ -60,7 +60,7 @@ const Empresas = () => {
                                 <th className="d-none d-lg-table-cell">Dias</th>
                                 <th className="d-none d-lg-table-cell">Empresa</th>
                                 <th className="d-none d-md-table-cell">Analista</th>
-                                <th>#</th>
+                                <th style={{ width: '50px' }}>#</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -75,12 +75,12 @@ const Empresas = () => {
                                             <td className="d-none d-lg-table-cell">{item.Empresa}</td>
                                             <td className="d-none d-md-table-cell">{item.Analista}</td>
                                             <td>
-                                                <a href={`/${urlRoot}/AddOrEdit/${item.Id}`} className="me-2">
+                                                <a href={`/${urlRoot}/AddOrEdit/${item.Id}`}>
                                                     <i className="fas fa-edit"></i>
                                                 </a>
-                                                <span className="text-danger" onClick={(e) => { RemoveData(item.Id) }}>
+                                                {/* <span className="text-danger" onClick={(e) => { RemoveData(item.Id) }}>
                                                     <i className="fas fa-trash"></i>
-                                                </span>
+                                                </span> */}
                                             </td>
                                         </tr>
                                     )
