@@ -61,7 +61,6 @@ const AddOrEdit = () => {
     return (
         <>
             <HeaderPage title="Empresas" pageType="cadastrar" accessKey="v" textBt="Voltar" linkToBack={`/${urlRoot}`} iconBt="fas fa-home me-2"></HeaderPage>
-            <pre>{JSON.stringify(empresa)}</pre>
             <div className="row">
                 <div className="col">
                     <div className="card">
@@ -71,7 +70,7 @@ const AddOrEdit = () => {
                                 <div className="col">
                                     <div className="form-group">
                                         <label htmlFor="nome">Empresa</label>
-                                        <input type="text" className="form-control" id="Empresa" name="Empresa" value={empresa.Nome} onChange={(e) => { setEmpresa({ ...empresa, Nome: e.target.value }) }} />
+                                        <input type="text" className="form-control" autoFocus id="Nome" name="Nome" value={empresa.Nome} onChange={(e) => { setEmpresa({ ...empresa, Nome: e.target.value }) }} />
                                     </div>
                                 </div>
                             </div>

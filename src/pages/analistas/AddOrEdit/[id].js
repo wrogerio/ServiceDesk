@@ -69,7 +69,7 @@ const AddOrEdit = () => {
                                 <div className="col">
                                     <div className="form-group">
                                         <label htmlFor="nome">Analista</label>
-                                        <input type="text" className="form-control" id="Analista" value={analista.Nome} name="Analista" onChange={(e) => { setAnalista({ ...analista, Nome: e.target.value }) }} />
+                                        <input type="text" className="form-control" id="Nome" autoFocus value={analista.Nome} name="Nome" onChange={(e) => { setAnalista({ ...analista, Nome: e.target.value }) }} />
                                     </div>
                                 </div>
                             </div>

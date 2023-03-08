@@ -29,6 +29,11 @@ const Navbar = () => {
                         </li>
                         <li className="nav-item">
                             <Link className={currentRoute == "/instituicoes" ? "nav-link active" : "nav-link"} href="/empresas" onClick={() => toggleMenu()}>
+                                <i className="fas fa-hand-holding-medical me-1"></i> Chamados
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className={currentRoute == "/instituicoes" ? "nav-link active" : "nav-link"} href="/empresas" onClick={() => toggleMenu()}>
                                 <i className="fas fa-building me-1"></i> Empresas
                             </Link>
                         </li>
