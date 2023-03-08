@@ -124,8 +124,7 @@ const AddOrEdit = () => {
                                 </div>
                                 <div className="col-12 mb-2">
                                     <div className="form-group">Descrição</div>
-                                    <textarea type="text" className="form-control" maxLength={600} name="Descricao" id="Descricao" rows={5} value={chamado.Descricao} onChange={e => setChamado({ ...chamado, Descricao: e.target.value })}>
-
+                                    <textarea type="text" className="form-control" maxLength={600} name="Descricao" id="Descricao" rows={7} value={chamado.Descricao} onChange={e => setChamado({ ...chamado, Descricao: e.target.value })}>
                                     </textarea>
                                 </div>
                                 <div className="col-12 col-md-6 col-lg-3 mb-2">
