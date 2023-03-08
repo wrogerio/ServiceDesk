@@ -32,6 +32,21 @@ const Navbar = () => {
                                 <i className="fas fa-building me-1"></i> Empresas
                             </Link>
                         </li>
+                        <li className="nav-item">
+                            <Link className={currentRoute == "/analistas" ? "nav-link active" : "nav-link"} href="/analistas" onClick={() => toggleMenu()}>
+                                <i className="fas fa-user me-1"></i> Analistas
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className={currentRoute == "/andamentos" ? "nav-link active" : "nav-link"} href="/andamentos" onClick={() => toggleMenu()}>
+                                <i className="fas fa-clock me-1"></i> Andamentos
+                            </Link>
+                        </li>
+                        <li className="nav-item">
+                            <Link className={currentRoute == "/areas" ? "nav-link active" : "nav-link"} href="/areas" onClick={() => toggleMenu()}>
+                                <i className="fas fa-cog me-1"></i> Áreas
+                            </Link>
+                        </li>
                     </ul>
                 </div>
             </div>
