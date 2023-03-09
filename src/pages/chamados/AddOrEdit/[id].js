@@ -3,7 +3,6 @@ import Link from "next/link";
 import { useState } from 'react';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { ConvertToStringDate } from "@/helper";
 
 
 const AddOrEdit = () => {
@@ -48,11 +47,14 @@ const AddOrEdit = () => {
 
     useEffect(() => {
         LoadDrops().then(d => {
-            loadData().then(data => {
-                if (data) {
-                    setChamado(data);
-                }
-            })
+            const id = window.location.href.split("AddOrEdit/")[1];
+            if (id !== "0") {
+                loadData().then(data => {
+                    if (data) {
+                        setChamado(data);
+                    }
+                })
+            }
         });
     }, [])
 
@@ -97,6 +99,7 @@ const AddOrEdit = () => {
     return (
         <>
             <HeaderPage title="Chamados" pageType="cadastrar" accessKey="v" textBt="Voltar" linkToBack={`/${urlRoot}`} iconBt="fas fa-home me-2"></HeaderPage>
+            <pre>{JSON.stringify(chamado, null, 2)}</pre>
             <div className="row">
                 <div className="col">
                     <div className="card">
