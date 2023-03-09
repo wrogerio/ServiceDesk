@@ -46,6 +46,19 @@ export const FecharChamado = async (id) => {
     })
 }
 
+export const ReabrirChamado = async (id) => {
+    const querie = `UPDATE Chamados SET DtEncerramento = NULL, AndamentoId = '9cece184-380b-44ba-b85b-5ae99d07d152' WHERE Id = '${id}'`
+    return new Promise(async (resolve, reject) => {
+        try {
+            await pool.connect();
+            const result = await pool.query(querie)
+            resolve(true);
+        } catch (error) {
+            reject(false);
+        }
+    })
+}
+
 export const Add = async (chamado) => {
     const querie = `    INSERT INTO Chamados 
                         (AnalistaId, AndamentoId, EmpresaId, AreaId, DtSolicitacao, Solicitante, Assunto, Descricao)  
