@@ -25,10 +25,10 @@ const AbertuasEncerramentos = () => {
                             <table className="table table-sm table-bordered">
                                 <thead>
                                     <tr>
-                                        <th>Ano/Mês</th>
+                                        <th>Ano / Mês</th>
                                         <th>Abert</th>
                                         <th>Encerr</th>
-                                        <th>%</th>
+                                        <th style={{ width: '65px' }}>%</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -40,7 +40,7 @@ const AbertuasEncerramentos = () => {
                                                     <td>{item.AnoSolicitacao} / {ConvertToMesSigla(item.MesSolicitacao)}</td>
                                                     <td>{item.Aberturas}</td>
                                                     <td>{item.Encerramentos}</td>
-                                                    <td>{parseFloat(item.Porcentagem).toFixed(2)} %</td>
+                                                    <td>{parseFloat(item.Porcentagem).toFixed(2)}</td>
                                                 </tr>
                                             )
                                         })
