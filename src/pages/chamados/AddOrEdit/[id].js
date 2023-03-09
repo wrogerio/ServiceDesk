@@ -39,28 +39,21 @@ const AddOrEdit = () => {
         return data;
     }
 
+    const LoadDrops = async () => {
+        setAndamentos(await LoadAndamento())
+        setAnalistas(await LoadAnalistas())
+        setEmpresas(await LoadEmpresas())
+        setAreas(await LoadAreas())
+    }
+
     useEffect(() => {
-        LoadAndamento().then(data => {
-            setAndamentos(data)
+        LoadDrops().then(d => {
+            loadData().then(data => {
+                if (data) {
+                    setChamado(data);
+                }
+            })
         });
-
-        LoadAnalistas().then(data => {
-            setAnalistas(data)
-        });
-
-        LoadEmpresas().then(data => {
-            setEmpresas(data)
-        });
-
-        LoadAreas().then(data => {
-            setAreas(data)
-        })
-
-        loadData().then(data => {
-            if (data) {
-                setChamado(data);
-            }
-        })
     }, [])
 
 
