@@ -20,9 +20,9 @@ const AbertuasEncerramentos = () => {
             <div className="row">
                 <div className="col">
                     <div className="card">
-                        <div className="card-body">
+                        <div className="card-body p-2">
                             <h5 className="card-title">Aberturas x Encerramentos</h5>
-                            <table className="table table-sm table-bordered">
+                            <table className="table table-sm table-bordered mb-0">
                                 <thead>
                                     <tr>
                                         <th>Ano / Mês</th>
