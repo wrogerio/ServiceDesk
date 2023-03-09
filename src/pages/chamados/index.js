@@ -104,7 +104,9 @@ const Empresas = () => {
                                             <td className="d-none d-lg-table-cell">{item.DiasCorridos}</td>
                                             <td className="d-none d-lg-table-cell">{item.Empresa}</td>
                                             <td className="d-none d-md-table-cell">{item.Analista}</td>
-                                            <td className="" onDoubleClick={() => FecharChamado(item.Id)}>{getAnalistaPhoto(item.AnalistaId)}</td>
+                                            <td className="" onDoubleClick={() => FecharChamado(item.Id)}>
+                                                {getAnalistaPhoto(item.AnalistaId)}
+                                            </td>
                                             <td>
                                                 <a href={`/${urlRoot}/AddOrEdit/${item.Id}`}>
                                                     <i className="fas fa-edit"></i>
