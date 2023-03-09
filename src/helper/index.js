@@ -97,30 +97,43 @@ export const ConvertToMesNome = (mesNumero) => {
 export const ConvertToMesSigla = (mesNumero) => {
     switch (mesNumero) {
         case 1:
-            return "JAN";
+            return "Jan";
+            break
         case 2:
-            return "FEV";
+            return "Fev";
+            break
         case 3:
-            return "MAR";
+            return "Mar";
+            break
         case 4:
-            return "ABR";
+            return "Abr";
+            break
         case 5:
-            return "MAI";
+            return "Mai";
+            break
         case 6:
-            return "JUN";
+            return "Jun";
+            break
         case 7:
-            return "JUL";
+            return "Jul";
+            break
         case 8:
-            return "AGO";
+            return "Ago";
+            break
         case 9:
-            return "SET";
+            return "Set";
+            break
         case 10:
-            return "OUT";
+            return "Out";
+            break
         case 11:
-            return "NOV";
+            return "Nov";
+            break
         case 12:
-            return "DEZ";
+            return "Dez";
+            break
         default:
-            return "erro";
+            return "";
+            break
     }
 };

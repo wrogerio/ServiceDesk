@@ -12,7 +12,7 @@ const Navbar = () => {
     };
 
     return (
-        <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
+        <nav className="navbar navbar-expand-lg navbar-dark bg-primary mb-2">
             <div className="container-fluid">
                 <Link className="navbar-brand" href="/">
                     Service Desk
