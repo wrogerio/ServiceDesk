@@ -99,7 +99,6 @@ const AddOrEdit = () => {
     return (
         <>
             <HeaderPage title="Chamados" pageType="cadastrar" accessKey="v" textBt="Voltar" linkToBack={`/${urlRoot}`} iconBt="fas fa-home me-2"></HeaderPage>
-            <pre>{JSON.stringify(chamado, null, 2)}</pre>
             <div className="row">
                 <div className="col">
                     <div className="card">
