@@ -1,31 +1,31 @@
 import { ConvertNumberTwoDigits, ConvertToMesSigla } from "@/helper";
 import { useEffect, useState } from "react";
 
-const AbertuasEncerramentos = () => {
-    const [aberturasEncerramentos, setAberturasEncerramentos] = useState({})
+const EmpresasAcompanhamento = () => {
+    const [empresasAcompanhamento, setEmpresasAcompanhamento] = useState({})
 
-    const LoadAberturasEncerramentos = async () => {
-        const res = await fetch('/api/dashboard/aberturas-encerramentos')
+    const LoadEmpresasAcompanhemento = async () => {
+        const res = await fetch('/api/dashboard/empresas-acompanhamento')
         const data = await res.json()
-        setAberturasEncerramentos(data)
+        setEmpresasAcompanhamento(data)
     }
 
     useEffect(() => {
-        LoadAberturasEncerramentos()
+        LoadEmpresasAcompanhemento()
     }, [])
 
 
     return (
         <>
-            <div className="row">
+            <div className="row mb-2">
                 <div className="col">
                     <div className="card">
                         <div className="card-body p-2">
-                            <h5 className="card-title">Aberturas x Encerramentos</h5>
+                            <h5 className="card-title text-danger">Empresas x Acompanhamento</h5>
                             <table className="table table-sm table-bordered mb-0">
                                 <thead>
                                     <tr>
-                                        <th>Ano / Mês</th>
+                                        <th>Empresa</th>
                                         <th>Abert</th>
                                         <th>Encerr</th>
                                         <th style={{ width: '65px' }}>%</th>
@@ -33,11 +33,11 @@ const AbertuasEncerramentos = () => {
                                 </thead>
                                 <tbody>
                                     {
-                                        Array.isArray(aberturasEncerramentos) &&
-                                        aberturasEncerramentos.map((item, index) => {
+                                        Array.isArray(empresasAcompanhamento) &&
+                                        empresasAcompanhamento.map((item, index) => {
                                             return (
                                                 <tr key={index}>
-                                                    <td>{item.AnoSolicitacao} / {ConvertToMesSigla(item.MesSolicitacao)}</td>
+                                                    <td>{item.Empresa}</td>
                                                     <td>{item.Aberturas}</td>
                                                     <td>{item.Encerramentos}</td>
                                                     <td>{parseFloat(item.Porcentagem).toFixed(2)}</td>
@@ -55,4 +55,4 @@ const AbertuasEncerramentos = () => {
     );
 };
 
-export default AbertuasEncerramentos;
+export default EmpresasAcompanhamento;
