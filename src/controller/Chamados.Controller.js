@@ -1,10 +1,10 @@
 import pool from "@/database/db";
 
-export const GetAll = async (areaId) => {
+export const GetAll = async (areaId, andamentoid) => {
     const querie = `SELECT  Id, AnalistaId, Analista, AndamentoId, Andamento, EmpresaId, Empresa, AreaId, Area, DtSolicitacao, DtSolicitacaoString, 
                             DtEncerramento, DiasCorridos, Solicitante, Assunto, Descricao
                     FROM    vPage_Chamados
-                    WHERE   DtEncerramento IS NULL And AreaId = '${areaId}'
+                    WHERE   AreaId = '${areaId}' and AndamentoId = '${andamentoid}'
                     ORDER   BY DtSolicitacao DESC`
     return new Promise(async (resolve, reject) => {
         try {

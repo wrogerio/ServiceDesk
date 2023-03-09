@@ -1,11 +1,10 @@
 import { GetAll, Add } from "@/controller/Chamados.Controller";
 
 export default async (req, res) => {
-    const { areaid } = req.headers;
-
+    const { areaid, andamentoid } = req.headers;
     switch (req.method) {
         case "GET":
-            const result = await GetAll(areaid);
+            const result = await GetAll(areaid, andamentoid);
             res.json(result);
             break;
         case "POST":

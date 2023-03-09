@@ -38,6 +38,11 @@ const Navbar = () => {
                             </Link>
                         </li>
                         <li className="nav-item">
+                            <Link className={currentRoute == "/encerrados" ? "nav-link active" : "nav-link"} href="/encerrados" onClick={() => toggleMenu()}>
+                                <i className="fas fa-angel me-1"></i> Encerrados
+                            </Link>
+                        </li>
+                        <li className="nav-item">
                             <Link className={currentRoute == "/empresas" ? "nav-link active" : "nav-link"} href="/empresas" onClick={() => toggleMenu()}>
                                 <i className="fas fa-building me-1"></i> Empresas
                             </Link>
@@ -60,7 +65,7 @@ const Navbar = () => {
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav >
     );
 };
 
