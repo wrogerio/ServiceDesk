@@ -1,22 +1,21 @@
 {
-    "files.exclude": {
-        ".eslintrc.json": true,
-        ".next": true,
-        ".vercel": true,
-        ".vscode": true,
-        "**/.DS_Store": true,
-        "**/.git": true,
-        "**/.hg": true,
-        "**/.svn": true,
-        "**/CVS": true,
-        "**/Thumbs.db": true,
-        "next-env.d.ts": true,
-        "next.config.js": true,
-        "node_modules": true,
-        "package-lock.json": true,
-        "pages/api/": true,
-        "public": true,
-        "README.md": true,
-        "tsconfig.json": true
-    }
+	"files.exclude": {
+		".eslintrc.json": true,
+		".next": true,
+		".vercel": true,
+		".vscode": true,
+		"**/.DS_Store": true,
+		"**/.git": true,
+		"**/.hg": true,
+		"**/.svn": true,
+		"**/CVS": true,
+		"**/Thumbs.db": true,
+		"next-env.d.ts": true,
+		"node_modules": true,
+		"package-lock.json": true,
+		"pages/api/": true,
+		"public": true,
+		"README.md": true,
+		"tsconfig.json": true
+	}
 }

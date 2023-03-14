@@ -1,6 +1,8 @@
 export default async (req, res) => {
   switch (req.method) {
     case "GET":
+      res.setHeader("Allow", "GET");
+      res.setHeader("Access-Control-Allow-Origin", "*");
       const d = new Date();
       res.status(200).send({
         year: d.getFullYear(),
