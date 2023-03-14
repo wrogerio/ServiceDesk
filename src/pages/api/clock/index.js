@@ -1,9 +1,8 @@
 export default async (req, res) => {
   switch (req.method) {
     case "GET":
-      // get date time from pt-br
       const d = new Date();
-      res.json({
+      res.status(200).send({
         year: d.getFullYear(),
         month: d.getMonth() + 1,
         day: d.getDate(),
