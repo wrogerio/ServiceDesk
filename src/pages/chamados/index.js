@@ -67,8 +67,10 @@ const Empresas = () => {
     const getAnalistaPhoto = (analistaId) => {
         if (analistaId.toLowerCase() == 'dfc86d2b-8052-4a3f-a2aa-39d8b4b1d030')
             return <img src="gerio.png" className="imgAnalista border border-2 border-secondary rounded" />
-        else
+        else if (analistaId.toLowerCase() == 'bfb88692-3c08-4b52-a206-61c4bd413695')
             return <img src="moiza.png" className="imgAnalista border border-2 border-secondary rounded" />
+        else
+            return <img src="paty.png" className="imgAnalista border border-2 border-secondary rounded" />
     }
 
 
