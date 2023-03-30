@@ -20,8 +20,7 @@ const Empresas = () => {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
-                    "areaid": '6ff0b99e-9a04-4b4d-9851-ae8e7a02554f',
-                    "andamentoid": '9cece184-380b-44ba-b85b-5ae99d07d152'
+                    "areaid": '6ff0b99e-9a04-4b4d-9851-ae8e7a02554f'
                 },
             });
             const data = await response.json();
