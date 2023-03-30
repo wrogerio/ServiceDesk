@@ -17,6 +17,23 @@ export const GetAll = async (areaId, andamentoid) => {
     })
 }
 
+export const GetEncerrados = async (areaId, andamentoid) => {
+    const querie = `SELECT  TOP 150 Id, AnalistaId, Analista, AndamentoId, Andamento, EmpresaId, Empresa, AreaId, Area, DtSolicitacao, DtSolicitacaoString, 
+                            DtEncerramento, DiasCorridos, Solicitante, Assunto, Descricao
+                    FROM    vPage_Chamados
+                    WHERE   AreaId = '${areaId}' and AndamentoId = '3031781C-ADD3-4137-80E4-53A446E46F0D'
+                    ORDER   BY DtSolicitacao DESC`
+    return new Promise(async (resolve, reject) => {
+        try {
+            await pool.connect();
+            const result = await pool.query(querie)
+            resolve(result.recordsets[0])
+        } catch (error) {
+            reject(error)
+        }
+    })
+}
+
 export const GetById = async (id) => {
     const querie = `SELECT  Id, AnalistaId, Analista, AndamentoId, Andamento, EmpresaId, Empresa, AreaId, Area, DtSolicitacao, DtSolicitacaoString, 
                             DtEncerramento, DiasCorridos, Solicitante, Assunto, Descricao
