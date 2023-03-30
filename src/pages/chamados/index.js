@@ -72,12 +72,32 @@ const Empresas = () => {
             return <img src="paty.png" className="imgAnalista border border-2 border-secondary rounded" />
     }
 
+    const getColor = (andamento) => {
+        if (andamento == 'Homologacao')
+            return '#e2e2e2'
+        else if (andamento == 'Executando')
+            return '#dbfbeb'
+        else
+            return '#fff'
+    }
+
 
     return (
         <>
             <HeaderPage title={`Chamados (${ConvertNumberTwoDigits(chamadoList.length)})`} pageType="index" accessKey="c" textBt="Cadastrar" linkToBack={`/${urlRoot}/AddOrEdit/0`} iconBt="fas fa-plus-circle me-2"></HeaderPage>
             <div className="row">
                 <div className="col">
+                    <div className="d-flex flex-row">
+                        <div className="d-flex align-items-center justify-content-center border" style={{ height: 40, backgroundColor: '#fff', width: 150 }}>
+                            <span className="fw-bold">Novo</span>
+                        </div>
+                        <div className="d-flex align-items-center justify-content-center border" style={{ height: 40, backgroundColor: '#e2e2e2', width: 150 }}>
+                            <span className="fw-bold">Homologacao</span>
+                        </div>
+                        <div className="d-flex align-items-center justify-content-center border" style={{ height: 40, backgroundColor: '#dbfbeb', width: 150 }}>
+                            <span className="fw-bold">Executando</span>
+                        </div>
+                    </div>
                     <table className="table table-bordered table-sm" id="tbChamados">
                         <thead>
                             <tr>
@@ -95,7 +115,7 @@ const Empresas = () => {
                                 Array.isArray(chamadoList) &&
                                 chamadoList.map((item, index) => {
                                     return (
-                                        <tr key={index}>
+                                        <tr key={index} style={{ backgroundColor: getColor(item.Andamento) }}>
                                             <td>
                                                 <a href={`/${urlRoot}/AddOrEdit/${item.Id}`}>
                                                     {item.Assunto}
