@@ -74,7 +74,7 @@ const Empresas = () => {
 
     const getColor = (andamento) => {
         if (andamento == 'Homologacao')
-            return '#e2e2e2'
+            return '#d3d3d3'
         else if (andamento == 'Executando')
             return '#dbfbeb'
         else
@@ -91,7 +91,7 @@ const Empresas = () => {
                         <div className="d-flex align-items-center justify-content-center border" style={{ height: 40, backgroundColor: '#fff', width: 150 }}>
                             <span className="fw-bold">Novo</span>
                         </div>
-                        <div className="d-flex align-items-center justify-content-center border" style={{ height: 40, backgroundColor: '#e2e2e2', width: 150 }}>
+                        <div className="d-flex align-items-center justify-content-center border" style={{ height: 40, backgroundColor: '#d3d3d3', width: 150 }}>
                             <span className="fw-bold">Homologacao</span>
                         </div>
                         <div className="d-flex align-items-center justify-content-center border" style={{ height: 40, backgroundColor: '#dbfbeb', width: 150 }}>
