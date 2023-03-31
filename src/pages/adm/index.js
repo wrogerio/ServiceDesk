@@ -21,7 +21,6 @@ const Adm = () => {
                 headers: {
                     "Content-Type": "application/json",
                     "areaid": 'fea42031-ea38-49bc-b91f-50e37ba59065',
-                    "andamentoid": '9cece184-380b-44ba-b85b-5ae99d07d152'
                 },
             });
             const data = await response.json();
